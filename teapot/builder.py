@@ -79,7 +79,7 @@ def create_archive(archive, source):
 
 def run_builder():
     print("Build starts from " + teapot.rootdir)
-    queue = ["test"]
+    queue = ["freetype"]
     for pkgname in queue:
         print(pkgname)
         delete_if_exist(build_path(pkgname))
