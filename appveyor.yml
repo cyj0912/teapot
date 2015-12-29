@@ -5,3 +5,4 @@ build_script:
 artifacts:
 - path: PKGS\output.zip
   name: TeapotOutput
+test: off
