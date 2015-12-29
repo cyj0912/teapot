@@ -21,7 +21,7 @@ configure.bat -confirm-license -opensource -debug-and-release -shared -nomake ex
 nmake
 nmake install
 """
-batch.format(builder.build_root(name))
+batch = batch.format(builder.build_root(name))
 f = open("compile.bat", "w")
 f.write(batch)
 f.close()
