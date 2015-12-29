@@ -1,0 +1,11 @@
+version: 1.0.{build}
+clone_depth: 1
+init:
+- ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+build_script:
+- cmd: C:\Python35-x64\python.exe teapot.py
+on_finish:
+- ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+artifacts:
+- path: PKGS\output.zip
+  name: TeapotOutput
