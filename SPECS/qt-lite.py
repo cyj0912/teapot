@@ -17,7 +17,7 @@ os.chdir("qtsrc")
 
 batch = """
 call "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\vcvarsall.bat" amd64
-configure.bat -confirm-license -opensource -debug-and-release -shared -nomake examples -nomake tests -opengl desktop -prefix {}
+call configure.bat -confirm-license -opensource -debug-and-release -shared -nomake examples -nomake tests -opengl desktop -prefix {}
 nmake
 nmake install
 """
