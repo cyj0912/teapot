@@ -15,10 +15,14 @@ os.rename("qt-everywhere-opensource-src-5.5.1", "qtsrc")
 shutil.move("qtbase", "qtsrc/")
 os.chdir("qtsrc")
 
-configcmd = 'configure.bat -confirm-license -opensource -debug-and-release -shared -nomake examples -nomake tests -opengl desktop'
-configcmd += ' -prefix '
-configcmd += builder.build_root(name)
-print(configcmd)
-subprocess.run(configcmd.split())
-subprocess.run('nmake'.split())
-subprocess.run('nmake install'.split())
+batch = """
+"C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\vcvarsall.bat" amd64
+configure.bat -confirm-license -opensource -debug-and-release -shared -nomake examples -nomake tests -opengl desktop -prefix {}
+nmake
+nmake install
+"""
+batch.format(builder.build_root(name))
+f = open("compile.bat", "w")
+f.write(batch)
+f.close()
+subprocess.run('compile.bat'.split())
