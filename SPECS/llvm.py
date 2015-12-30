@@ -6,13 +6,13 @@ name = 'llvm'
 version = '3.7.0'
 source0 = 'llvm-%s.src.tar.xz' % version
 source0folder = 'llvm-%s.src' % version
-source1 = 'cfe-%s.src.tar.xz' % version
-source1folder = 'cfe-%s.src' % version
+# source1 = 'cfe-%s.src.tar.xz' % version
+# source1folder = 'cfe-%s.src' % version
 print("Running: " + builder.spec_file_path(name))
 os.chdir(builder.build_path(name))
 builder.unpack_archive(builder.source_file_path(source0), '.', None)
-builder.unpack_archive(builder.source_file_path(source1), source0folder + '/tools', None)
-os.rename(source0folder + '/tools/' + source1folder, source0folder + '/tools/clang')
+# builder.unpack_archive(builder.source_file_path(source1), source0folder + '/tools', None)
+# os.rename(source0folder + '/tools/' + source1folder, source0folder + '/tools/clang')
 os.chdir(source0folder)
 
 cmake_generator = 'Visual Studio 14 2015 Win64'
