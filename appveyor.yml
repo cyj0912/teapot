@@ -1,4 +1,7 @@
 version: 1.0.{build}
+branches:
+  except:
+  - master
 clone_depth: 1
 build_script:
 - cmd: C:\Python35-x64\python.exe teapot.py
@@ -6,3 +9,4 @@ artifacts:
 - path: PKGS\output.zip
   name: TeapotOutput
 test: off
+
