@@ -1,6 +1,5 @@
 from teapot import builder
 import os
-import shutil
 import subprocess
 
 name = 'llvm'
@@ -13,7 +12,7 @@ print("Running: " + builder.spec_file_path(name))
 os.chdir(builder.build_path(name))
 builder.unpack_archive(builder.source_file_path(source0), '.', None)
 builder.unpack_archive(builder.source_file_path(source1), source0folder + '/tools', None)
-os.rename(source0folder + '/tools/' + source1folder, 'clang')
+os.rename(source0folder + '/tools/' + source1folder, source0folder + '/tools/clang')
 os.chdir(source0folder)
 
 cmake_generator = 'Visual Studio 14 2015 Win64'
@@ -27,4 +26,3 @@ f = open("compile.bat", "w")
 f.write(batch)
 f.close()
 subprocess.run('compile.bat'.split())
-
